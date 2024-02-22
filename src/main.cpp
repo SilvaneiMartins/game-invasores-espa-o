@@ -1,27 +1,26 @@
 #include <raylib.h>
-#include "ball.h"
+# include "spaceship.hpp"
 
 int main()
 {
-    Color darkGreen = Color{20, 160, 133, 255};
+    Color grey = {29, 29, 29, 255};
+    int windowWidth = 750;
+    int windowHeight = 700;
 
-    const int screenWidth = 800;
-    const int screenHeight = 600;
-
-    Ball ball = Ball();
-
-    InitWindow(screenWidth, screenHeight, "Invasores do Spaço - My Silvanei Martins");
+    InitWindow(windowWidth, windowHeight, "Invasores do Espaço - by Silvanei Martins");
     SetTargetFPS(60);
 
-    while (!WindowShouldClose())
+    Spaceship spaceship;
+
+    while (WindowShouldClose() == false)
     {
         BeginDrawing();
-        ClearBackground(darkGreen);
-        ball.Update();
-        ball.Draw();
+        ClearBackground(grey);
+        DrawText("Invasores do Espaço", 250, 10, 20, WHITE);
+        spaceship.Draw();
+
         EndDrawing();
     }
 
     CloseWindow();
-    return 0;
 }
