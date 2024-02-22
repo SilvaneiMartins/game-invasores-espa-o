@@ -19,7 +19,7 @@ int main()
         game.Update();
         BeginDrawing();
         ClearBackground(grey);
-        // DrawText("Invasores do Espaço", 250, 10, 20, WHITE);
+        DrawText("Invasores do Espaço", 250, 10, 20, WHITE);
         game.Draw();
         EndDrawing();
     }
