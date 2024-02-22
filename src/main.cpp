@@ -16,12 +16,11 @@ int main()
     while (WindowShouldClose() == false)
     {
         game.HandleInput();
-
+        game.Update();
         BeginDrawing();
         ClearBackground(grey);
-        DrawText("Invasores do Espaço", 250, 10, 20, WHITE);
+        // DrawText("Invasores do Espaço", 250, 10, 20, WHITE);
         game.Draw();
-
         EndDrawing();
     }
 
