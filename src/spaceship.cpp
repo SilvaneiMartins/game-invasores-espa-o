@@ -48,3 +48,9 @@ void Spaceship::FireLaser()
         lastFireTime = GetTime();
     }
 }
+
+// Obtenha o retângulo da nave
+Rectangle Spaceship::getRect()
+{
+    return {position.x, position.y, float(image.width), float(image.height)};
+}

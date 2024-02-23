@@ -1,16 +1,19 @@
 #include "mysteryship.hpp"
 
+// Construtor
 MysteryShip::MysteryShip()
 {
     image = LoadTexture("Graphics/mystery.png");
     alive = false;
 }
 
+// Destrutor
 MysteryShip::~MysteryShip()
 {
     UnloadTexture(image);
 }
 
+// Obtenha o retângulo da nave
 void MysteryShip::Spawn()
 {
     position.y = 90;
@@ -30,6 +33,17 @@ void MysteryShip::Spawn()
     alive = true;
 }
 
+// Obtenha o retângulo da nave
+Rectangle MysteryShip::getRect()
+{
+    if (alive) {
+        return {position.x, position.y, float(image.width), float(image.height)};
+    } else {
+        return {position.x, position.y, 0, 0};
+    }
+}
+
+// Atualize a nave
 void MysteryShip::Update()
 {
     if (alive)
@@ -42,6 +56,7 @@ void MysteryShip::Update()
     }
 }
 
+// Desenhe a nave
 void MysteryShip::Draw()
 {
     if (alive)
