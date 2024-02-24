@@ -19,6 +19,8 @@ int main()
     int windowHeight = 700;
 
     InitWindow(windowWidth + offset, windowHeight + 2 * offset, "Invasores do Espaço - by Silvanei Martins");
+    InitAudioDevice();
+
     Font font = LoadFontEx("Font/monogram.ttf", 64, 0, 0);
     Texture2D spaceshipImage = LoadTexture("graphics/spaceship.png");
     SetTargetFPS(60);
@@ -27,8 +29,11 @@ int main()
 
     while (WindowShouldClose() == false)
     {
+        UpdateMusicStream(game.music);
+
         game.HandleInput();
         game.Update();
+        
         BeginDrawing();
         ClearBackground(grey);
         DrawRectangleRoundedLines({10, 10, 780, 780}, 0.18f, 20, 2, yellow);
@@ -67,4 +72,5 @@ int main()
     }
 
     CloseWindow();
+    CloseAudioDevice();
 }

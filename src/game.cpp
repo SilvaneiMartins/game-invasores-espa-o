@@ -6,6 +6,9 @@
 // Construtor
 Game::Game()
 {
+    music = LoadMusicStream("sounds/music.ogg");
+    explosionSound = LoadSound("sounds/explosion.ogg");
+    PlayMusicStream(music);
     InitGame();
 }
 
@@ -13,6 +16,8 @@ Game::Game()
 Game::~Game()
 {
     Alien::UnloadImages();
+    UnloadMusicStream(music);
+    UnloadSound(explosionSound);
 }
 
 void Game::Update()
@@ -194,6 +199,9 @@ void Game::CheckForCollisions()
         {
             if (CheckCollisionRecs(it -> getRect(), laser.getRect()))
             {
+                // Tocar som de explosão
+                PlaySound(explosionSound);
+
                 // Adicione pontos ao jogador
                 if (it -> type == 1) 
                 {
@@ -241,6 +249,7 @@ void Game::CheckForCollisions()
             laser.active = false;
             score += 500;
             checkForHighscore();
+            PlaySound(explosionSound);
         }
     }
 
@@ -334,7 +343,8 @@ void Game::checkForHighscore()
 void Game::saveHighscoreToFile(int highscore)
 {
     std::ofstream highscoreFile("highscore.txt");
-    if (highscoreFile.is_open()) {
+    
+    if(highscoreFile.is_open()) {
         highscoreFile << highscore;
         highscoreFile.close();
     } else {
@@ -343,12 +353,12 @@ void Game::saveHighscoreToFile(int highscore)
 }
 
 // Carregar pontuação mais alta do arquivo
-int Game::loadHighscoreFromFile()
+int Game::loadHighscoreFromFile() 
 {
     int loadedHighscore = 0;
     std::ifstream highscoreFile("highscore.txt");
 
-    if (highscoreFile.is_open()) {
+    if(highscoreFile.is_open()) {
         highscoreFile >> loadedHighscore;
         highscoreFile.close();
     } else {

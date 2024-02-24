@@ -17,6 +17,7 @@ class Game
         int lives;
         int score;
         int highscore;
+        Music music;
     private:
         void DeleteInactiveLasers();
         std::vector<Obstacle> GenerateObstacles();
@@ -41,4 +42,5 @@ class Game
         MysteryShip mysteryShip;
         float mysteryShipSpawnInterval;
         float timeLastSpawn;
+        Sound explosionSound;
 };

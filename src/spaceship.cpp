@@ -7,12 +7,14 @@ Spaceship::Spaceship()
     position.x = (GetScreenWidth() / 2 - image.width) / 2;
     position.y = GetScreenHeight() - image.height - 100;
     lastFireTime = 0.0;
+    laserSound = LoadSound("sounds/laser.ogg");
 }
 
 // Destrutor
 Spaceship::~Spaceship()
 {
     UnloadTexture(image);
+    UnloadSound(laserSound);
 }
 
 // Desenhe a nave
@@ -46,6 +48,7 @@ void Spaceship::FireLaser()
         Laser laser = Laser({position.x + image.width / 2 - 2, position.y}, -6);
         lasers.push_back(laser);
         lastFireTime = GetTime();
+        PlaySound(laserSound);
     }
 }
 
