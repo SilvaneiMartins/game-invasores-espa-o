@@ -1,11 +1,13 @@
 <h1 align="center">
     INVASORES DO ESPAÇO
     <br />
+    Linguagem: C++
+    <br />
     Versão: 1.0
 </h1>
 
 <h4 align="center">
-    🚀 EM ANDAMENTO 🚀
+    🚀 Primeira Fase Terminou 🚀
 </h4>
 
 ## Informação do Game
@@ -30,7 +32,9 @@ Portanto, todo o código-fonte agora reside na pasta src.
 </p>
 
 <p align="center">
-🎥 <a href="https://imgur.com/XYPS5u1"><img src="https://i.imgur.com/XYPS5u1.png" title="source: imgur.com" /></a>
+    <a href="https://imgur.com/Gup6jka"><img src="https://i.imgur.com/Gup6jka.png" title="source: imgur.com" /></a>
+    <br />
+    <a href="https://imgur.com/XYPS5u1"><img src="https://i.imgur.com/XYPS5u1.png" title="source: imgur.com" /></a>
 </p>
 
 ## Executar o game
@@ -43,7 +47,7 @@ Portanto, todo o código-fonte agora reside na pasta src.
     cd game-python-shooter
 
     # executar o game
-    $ pressionar f5 do teclado
+    $ pressionar F5 do teclado, para executar o game.
 ```
 
 ## Licença
