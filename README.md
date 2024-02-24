@@ -41,10 +41,10 @@ Portanto, todo o código-fonte agora reside na pasta src.
 
 ```bash
     # Clone o Repositório:
-    $ git clone https://github.com/SilvaneiMartins/game-python-shooter
+    $ git clone https://github.com/SilvaneiMartins/game-invasores-espaco
 
     # Entre no Diretório:
-    cd game-python-shooter
+    cd game-invasores-espaco
 
     # executar o game
     $ pressionar F5 do teclado, para executar o game.

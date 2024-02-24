@@ -9,6 +9,7 @@
 		"**/*.exe": true,
 	},
 	"cSpell.words": [
+		"espaco",
 		"imgur",
 		"raylib",
 		"Raylib"
