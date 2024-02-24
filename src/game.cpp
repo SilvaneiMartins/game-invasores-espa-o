@@ -1,5 +1,7 @@
-#include "game.hpp"
 #include <iostream>
+#include <fstream>
+
+#include "game.hpp"
 
 // Construtor
 Game::Game()
@@ -203,6 +205,9 @@ void Game::CheckForCollisions()
                 {
                     score += 300;
                 }
+
+                // Verifique se o jogador atingiu a pontuação mais alta
+                checkForHighscore();
                 
                 it = aliens.erase(it);
                 laser.active = false;
@@ -235,6 +240,7 @@ void Game::CheckForCollisions()
             mysteryShip.alive = false;
             laser.active = false;
             score += 500;
+            checkForHighscore();
         }
     }
 
@@ -310,8 +316,46 @@ void Game::InitGame()
     timeLastSpawn = 0.0;
     lives = 3;
     score = 0;
+    highscore = loadHighscoreFromFile();
     run = true;
     mysteryShipSpawnInterval = GetRandomValue(10, 20);
+}
+
+// Verifique a pontuação mais alta
+void Game::checkForHighscore()
+{
+    if (score > highscore) {
+        highscore = score;
+        saveHighscoreToFile(highscore);
+    }
+}
+
+// Salve a pontuação mais alta no arquivo
+void Game::saveHighscoreToFile(int highscore)
+{
+    std::ofstream highscoreFile("highscore.txt");
+    if (highscoreFile.is_open()) {
+        highscoreFile << highscore;
+        highscoreFile.close();
+    } else {
+        std::cerr << "Não foi possível salvar pontuação no arquivo." << std::endl;
+    }
+}
+
+// Carregar pontuação mais alta do arquivo
+int Game::loadHighscoreFromFile()
+{
+    int loadedHighscore = 0;
+    std::ifstream highscoreFile("highscore.txt");
+
+    if (highscoreFile.is_open()) {
+        highscoreFile >> loadedHighscore;
+        highscoreFile.close();
+    } else {
+        std::cerr << "Não foi possível carregar pontuação do arquivo." << std::endl;
+    }
+
+    return loadedHighscore;
 }
 
 // Reiniciar o jogo

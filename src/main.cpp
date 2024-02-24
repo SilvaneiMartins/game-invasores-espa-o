@@ -32,7 +32,7 @@ int main()
         BeginDrawing();
         ClearBackground(grey);
         DrawRectangleRoundedLines({10, 10, 780, 780}, 0.18f, 20, 2, yellow);
-        DrawTextEx(font, "Invasores do Espaco", {230, 20}, 30, 3, yellow);
+        DrawTextEx(font, "Invasores do Espaco", {230, 15}, 30, 3, WHITE);
         DrawLineEx({24, 730}, {775, 730}, 3, yellow);
         
         // Desenhe o texto do nível
@@ -56,6 +56,11 @@ int main()
         DrawTextEx(font, "Pontos", {50, 20}, 20, 2, yellow);
         std::string scoreText = FormatWidthLeadingZeros(game.score, 5);
         DrawTextEx(font, scoreText.c_str(), {50, 40}, 25, 2, yellow);
+
+        // Desenhe a pontuação mais alta
+        DrawTextEx(font, "Recorde", {670, 20}, 20, 2, yellow);
+        std::string highscoreText = FormatWidthLeadingZeros(game.highscore, 5);
+        DrawTextEx(font, highscoreText.c_str(), {675, 40}, 25, 2, yellow);
 
         game.Draw();
         EndDrawing();
