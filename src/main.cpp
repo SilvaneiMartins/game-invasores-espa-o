@@ -1,6 +1,14 @@
 #include <raylib.h>
+#include <string>
 
 #include "game.hpp"
+
+std::string FormatWidthLeadingZeros(int number, int width)
+{
+    std::string numberText = std::to_string(number);
+    int leadingZeros = width - numberText.length();
+    return numberText = std::string(leadingZeros, '0') + numberText;
+}
 
 int main()
 {
@@ -24,7 +32,7 @@ int main()
         BeginDrawing();
         ClearBackground(grey);
         DrawRectangleRoundedLines({10, 10, 780, 780}, 0.18f, 20, 2, yellow);
-        DrawTextEx(font, "Invasores do Espaco", {220, 30}, 35, 3, yellow);
+        DrawTextEx(font, "Invasores do Espaco", {230, 20}, 30, 3, yellow);
         DrawLineEx({24, 730}, {775, 730}, 3, yellow);
         
         // Desenhe o texto do nível
@@ -43,6 +51,11 @@ int main()
             DrawTextureV(spaceshipImage, {x, 745}, yellow);
             x += 50;
         }
+
+        // Desenhe a pontuação do jogador
+        DrawTextEx(font, "Pontos", {50, 20}, 20, 2, yellow);
+        std::string scoreText = FormatWidthLeadingZeros(game.score, 5);
+        DrawTextEx(font, scoreText.c_str(), {50, 40}, 25, 2, yellow);
 
         game.Draw();
         EndDrawing();
